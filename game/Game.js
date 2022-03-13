@@ -3,7 +3,6 @@ class Game {
         this.board = new Board();
         this.players = this.createPlayers();
         this.ready = false;
-        console.log('Game', this);
     }
     
     
@@ -11,7 +10,7 @@ class Game {
      * Returns active player.
      * @return  {Object}    player - The active player.
      */
-	get activePlayer() {
+	get activePlayer () {
         return this.players.find(player => player.active);
 	}
     
@@ -20,9 +19,8 @@ class Game {
      * Creates two player objects
      * @return  {array}    An array of two player objects.
      */
-    createPlayers() {
-        const players = [new Player('Player 1', 1, '#e15258', true),
-                         new Player('Player 2', 2, '#e59a13')];
+    createPlayers () {
+        const players = [new Player('Player 1', 1, '#e15258', true), new Player('Player 2', 2, '#e59a13')];
         return players;
     }
     
@@ -30,7 +28,7 @@ class Game {
     /** 
      * Initializes game. 
      */
-    startGame(){
+    startGame (){
         this.board.drawHTMLBoard();
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
@@ -41,7 +39,7 @@ class Game {
 	 * Branches code, depending on what key player presses
 	 * @param	{Object}	e - Keydown event object
 	 */
-	handleKeydown(e) {
+	handleKeydown (e) {
         if (this.ready) {
             if (e.key === "ArrowLeft") {
                 this.activePlayer.activeToken.moveLeft();
@@ -57,7 +55,7 @@ class Game {
     /**
      * Finds Space object to drop Token into, drops Token
      */
-    playToken(){
+    playToken () {
         let spaces = this.board.spaces;
         let activeToken = this.activePlayer.activeToken;
         let targetColumn = spaces[activeToken.columnLocation];
@@ -84,7 +82,7 @@ class Game {
      * @param   {Object}    token - The token that's being dropped.
      * @param   {Object}    target - Targeted space for dropped token.
      */
-    updateGameState(token, target) {
+    updateGameState (token, target) {
 		target.mark(token);
 
         if (!this.checkForWin(target)) {
@@ -107,7 +105,7 @@ class Game {
      * @param   {Object}    target - Targeted space for dropped token.
      * @return  {boolean}   Boolean value indicating whether the game has been won (true) or not (false)
      */
-    checkForWin(target){
+    checkForWin (target) {
     	const owner = target.token.owner;
     	let win = false;
     	// vertical
@@ -165,7 +163,7 @@ class Game {
     /** 
      * Switches active player. 
      */
-	switchPlayers() {
+	switchPlayers () {
         this.players.map( player => player.active = !player.active );
     }
     
@@ -174,8 +172,10 @@ class Game {
      * Displays winner info.
      * @param   {String}    message - Game over message.      
      */
-    gameOver(message) {
+    gameOver (message) {
 		document.getElementById('game-over').style.display = 'block';
         document.getElementById('game-over').textContent = message;
     }
 }
+
+module.exports = Game;

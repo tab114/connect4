@@ -4,14 +4,13 @@ class Token {
         this.id = `token-${index}-${owner.id}`;
         this.dropped = false;
         this.columnLocation = 0;
-        console.log('Token', this);
     }
     
     /** 
      * Gets associated htmlToken.
      * @return  {element}   Html element associated with token object.
      */
-    get htmlToken() {
+    get htmlToken () {
         return document.getElementById(this.id);
     }
 	
@@ -20,7 +19,7 @@ class Token {
      * Gets left offset of html element.
      * @return  {number}   Left offset of token object's htmlToken.
      */
-    get offsetLeft() {
+    get offsetLeft () {
         return this.htmlToken.offsetLeft;
     }
 	
@@ -28,7 +27,7 @@ class Token {
     /** 
      * Draws new HTML token.
      */
-    drawHTMLToken(){
+    drawHTMLToken () {
         const token = document.createElement('div');
         document.getElementById('game-board-underlay').appendChild(token);
         token.setAttribute('id', this.id);
@@ -40,10 +39,9 @@ class Token {
     /** 
      * Moves html token one column to left.
      */
-    moveLeft() {
+    moveLeft () {
         if (this.columnLocation > 0) {
             this.htmlToken.style.left = this.offsetLeft - 76;
-            //this.htmlToken.style.left = (this.columnLocation - 1) * 76;
             this.columnLocation -= 1;
         } 
     }
@@ -53,11 +51,10 @@ class Token {
      * Moves html token one column to right.
      * @param   {number}    columns - number of columns on the game board    
      */
-    moveRight(columns) {
+    moveRight (columns) {
         if (this.columnLocation < columns - 1) {
             console.log(this.offsetLeft);
             this.htmlToken.style.left = this.offsetLeft + 76;
-            //this.htmlToken.style.left = (this.columnLocation + 1) * 76;
             this.columnLocation += 1;
         }
     }
@@ -68,10 +65,11 @@ class Token {
      * @param   {Object}    Targeted space for dropped token.
      * @param   {function}  The reset function to call after the drop animation has completed.
      */
-	drop(target, reset) {
+	drop (target, reset) {
         this.dropped = true;
-
         this.htmlToken.style.top = target.y * target.diameter;
         reset();
 	}
 }
+
+module.exports = Token;
