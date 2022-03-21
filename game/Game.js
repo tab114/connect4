@@ -177,5 +177,3 @@ class Game {
         document.getElementById('game-over').textContent = message;
     }
 }
-
-module.exports = Game;

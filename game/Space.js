@@ -41,5 +41,3 @@ class Space {
 		this.token = token;
 	}
 }
-
-module.exports = Space;

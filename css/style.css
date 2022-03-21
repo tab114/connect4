@@ -1,4 +1,3 @@
-/* BACKGROUND AND BODY */
 body {
     margin: 0;
     padding: 0;
@@ -7,25 +6,13 @@ body {
 	font-size: 1.5em;
 	color: white;
 	text-align: center;
-    background: rgb(48,56,83); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(48,56,83,1) 0%, rgba(32,38,55,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(48,56,83,1) 0%,rgba(32,38,55,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(48,56,83,1) 0%,rgba(32,38,55,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303853', endColorstr='#202637',GradientType=0 ); /* IE6-9 */
+    background: #303853;
 }
 
 #game-scene {
     width: 100%;
     position: relative;
     z-index: 9;
-}
-
-.table {
-    background-color: #645a7e;
-    z-index: 10;
-    width: 100%;
-    position: fixed;
-    height: 100%;
 }
 
 #begin-game {
@@ -46,7 +33,6 @@ body {
     font-size: 25px;
 }
 
-/* BOARD AND PIECES */
 #game-board {
 	position: relative;
 	width: 548px;
@@ -54,7 +40,6 @@ body {
 	border: 8px solid #5FCF80;
 	height: 472px;
 	border-radius: 7px;
-	float: left;
     z-index: 15;
     box-sizing: border-box;
 }
@@ -63,7 +48,6 @@ body {
     position: absolute;
 	width: 548px;
 	height: 472px;
-    /*box-sizing: border-box;*/
 	margin: 0 auto;
     left: 0;
     right: 0;
@@ -73,7 +57,7 @@ body {
 #play-area {
     margin: 0 auto;
     width: 750px;
-    margin-top: 100px;
+    margin-top: 125px;
 	opacity: 0;
 }
 
@@ -92,57 +76,6 @@ circle {
     stroke-width: 16px;
 }
 
-
-/* BOARD STAND */
-.stand-container {
-    float: left;
-    width: 100px;
-    margin-top: 150px;
-    position: relative;
-}
-
-.stand-container.left {
-    left: 27.5px;
-}
-
-.stand-container.right {
-    right: 27.5px;
-}
-
-.stand-leg {
-    width: 20px;
-    height: 350px;
-    margin: 0 auto;
-    background-color: #e59a13;
-    border-radius: 5px 5px 0px 0px;
-}
-
-.stand-attachment {
-    width: 15px;
-    height: 20px;
-    background-color: #e59a13;
-    position: absolute;
-    top: 15px;
-}
-
-.stand-attachment.left {
-    left: 58px;
-}
-
-.stand-attachment.right {
-    right: 58px;
-}
-
-.stand-foot {
-    width: 100%;
-    background-color: #e59a13;
-    height: 20px;
-    border-radius: 8px 8px 0px 0px;
-    top: 350px;
-}
-
-
-/* TEXT CONTENT */
 #game-over {
 	display: none;
 	position: absolute;

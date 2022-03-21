@@ -71,5 +71,3 @@ class Token {
         reset();
 	}
 }
-
-module.exports = Token;

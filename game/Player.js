@@ -49,5 +49,3 @@ class Player {
         return this.unusedTokens.length == 0 ? false : true;
     }
 }
-
-module.exports = Player;
