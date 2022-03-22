@@ -5,6 +5,7 @@ class Board {
         this.rows = 6;
         this.columns = 7;
         this.spaces = this.createSpaces();
+        console.log('hi');
     }
     
     /** 
