@@ -1,3 +1,6 @@
+import Board from './Board';
+import Player from './Player';
+
 class Game {
     constructor() {
         this.board = new Board();
@@ -94,7 +97,6 @@ class Game {
                 this.gameOver('No more tokens');
             }
         } else {
-			console.log('win');
             this.gameOver(`${target.owner.name} wins!`)
         }			
     }
@@ -177,3 +179,5 @@ class Game {
         document.getElementById('game-over').textContent = message;
     }
 }
+
+export default Game;

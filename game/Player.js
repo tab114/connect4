@@ -1,3 +1,5 @@
+import Token from './Token';
+
 class Player {
     constructor(name, id, color, active = false) {
         this.name = name;
@@ -49,3 +51,5 @@ class Player {
         return this.unusedTokens.length == 0 ? false : true;
     }
 }
+
+export default Player;

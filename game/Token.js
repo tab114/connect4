@@ -53,7 +53,6 @@ class Token {
      */
     moveRight (columns) {
         if (this.columnLocation < columns - 1) {
-            console.log(this.offsetLeft);
             this.htmlToken.style.left = this.offsetLeft + 76;
             this.columnLocation += 1;
         }
@@ -71,3 +70,5 @@ class Token {
         reset();
 	}
 }
+
+export default Token;

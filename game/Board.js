@@ -1,9 +1,10 @@
+import Space from './Space';
+
 class Board {
     constructor() {
         this.rows = 6;
         this.columns = 7;
         this.spaces = this.createSpaces();
-        console.log( this.spaces );
     }
     
     /** 
@@ -34,3 +35,5 @@ class Board {
         }
 	} 
 }
+
+export default Board;

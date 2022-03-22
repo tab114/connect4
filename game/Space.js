@@ -41,3 +41,5 @@ class Space {
 		this.token = token;
 	}
 }
+
+export default Space;
