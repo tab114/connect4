@@ -1,8 +1,13 @@
+import Game from '../game/Game';
+
 describe('Game', () => {
+	let game;
   
 	beforeAll(() => {
+		game = new Game();
 	});
 
-	test('', () => {
+	test('start game', () => {
+		game.startGame();
     });
 })
