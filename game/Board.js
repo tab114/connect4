@@ -5,12 +5,11 @@ class Board {
         this.rows = 6;
         this.columns = 7;
         this.spaces = this.createSpaces();
-        console.log('hi');
     }
     
     /** 
      * Generates 2D array of spaces. 
-     * @return  {array}     An array of space objects
+     * @return {array} An array of space objects
      */
     createSpaces () {
         const spaces = [];

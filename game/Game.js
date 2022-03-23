@@ -11,7 +11,7 @@ class Game {
     
     /** 
      * Returns active player.
-     * @return  {Object}    player - The active player.
+     * @return {Object} the active player.
      */
 	get activePlayer () {
         return this.players.find(player => player.active);
@@ -20,7 +20,7 @@ class Game {
     
     /** 
      * Creates two player objects
-     * @return  {array}    An array of two player objects.
+     * @return {array} An array of two player objects.
      */
     createPlayers () {
         const players = [new Player('Player 1', 1, '#e15258', true), new Player('Player 2', 2, '#e59a13')];
@@ -31,7 +31,7 @@ class Game {
     /** 
      * Initializes game. 
      */
-    startGame (){
+    startGame () {
         this.board.drawHTMLBoard();
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
@@ -82,8 +82,8 @@ class Game {
 
     /** 
      * Updates game state after token is dropped. 
-     * @param   {Object}    token - The token that's being dropped.
-     * @param   {Object}    target - Targeted space for dropped token.
+     * @param {Object} token - The token that's being dropped.
+     * @param {Object} target - Targeted space for dropped token.
      */
     updateGameState (token, target) {
 		target.mark(token);
@@ -104,8 +104,8 @@ class Game {
     
     /** 
      * Checks if there a winner on the board after each token drop.
-     * @param   {Object}    target - Targeted space for dropped token.
-     * @return  {boolean}   Boolean value indicating whether the game has been won (true) or not (false)
+     * @param {Object} target - Targeted space for dropped token.
+     * @return {boolean} Boolean value indicating whether the game has been won (true) or not (false)
      */
     checkForWin (target) {
     	const owner = target.token.owner;
@@ -172,7 +172,7 @@ class Game {
 
     /** 
      * Displays winner info.
-     * @param   {String}    message - Game over message.      
+     * @param {String} message - Game over message.      
      */
     gameOver (message) {
 		document.getElementById('game-over').style.display = 'block';
