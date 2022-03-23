@@ -1,1 +1,4 @@
-module.exports = { transform: { '^.+\\.(js|jsx)$': 'babel-jest' } };
+module.exports = {
+	transform: { '^.+\\.(js|jsx)$': 'babel-jest' },
+	verbose: true
+};
