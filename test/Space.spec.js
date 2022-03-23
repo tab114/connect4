@@ -1,4 +1,4 @@
-const Space = require('../game/Space');
+import Space from '../game/Space';
 
 describe('Space', () => {
 	let x,y;

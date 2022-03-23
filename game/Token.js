@@ -8,7 +8,7 @@ class Token {
     
     /** 
      * Gets associated htmlToken.
-     * @return  {element}   Html element associated with token object.
+     * @return {element} Html element associated with token object.
      */
     get htmlToken () {
         return document.getElementById(this.id);
@@ -17,7 +17,7 @@ class Token {
 	
     /** 
      * Gets left offset of html element.
-     * @return  {number}   Left offset of token object's htmlToken.
+     * @return {number} Left offset of token object's htmlToken.
      */
     get offsetLeft () {
         return this.htmlToken.offsetLeft;
@@ -49,7 +49,7 @@ class Token {
     
     /** 
      * Moves html token one column to right.
-     * @param   {number}    columns - number of columns on the game board    
+     * @param {number} columns - number of columns on the game board    
      */
     moveRight (columns) {
         if (this.columnLocation < columns - 1) {
@@ -61,8 +61,8 @@ class Token {
     
     /** 
      * Drops html token into targeted board space.
-     * @param   {Object}    Targeted space for dropped token.
-     * @param   {function}  The reset function to call after the drop animation has completed.
+     * @param {Object} Targeted space for dropped token.
+     * @param {function} The reset function to call after the drop animation has completed.
      */
 	drop (target, reset) {
         this.dropped = true;

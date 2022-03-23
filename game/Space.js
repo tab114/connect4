@@ -10,7 +10,7 @@ class Space {
 	
 	/**
 	 * Checks if space has an associated token to find its owner
-	 * @return  {(null|Object)} Returns null or the owner object of the space's associated token.
+	 * @return {(null|Object)} Returns null or the owner object of the space's associated token.
 	 */
 	get owner () {
         if (this.token) return this.token.owner;
