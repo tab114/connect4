@@ -8,6 +8,5 @@ describe('Game', () => {
 	});
 
 	test('start game', () => {
-		game.startGame();
     });
 })

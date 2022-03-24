@@ -1,8 +1,10 @@
 import Space from '../game/Space';
 import Token from '../game/Token';
 import Player from '../game/Player';
+import body from '../test/bodyTest.html';
 
 describe('Space', () => {
+	document.body.innerHTML = body;
 	let x,y,owner,space,token,id;
   
 	beforeAll(() => {
@@ -30,5 +32,9 @@ describe('Space', () => {
 
 	test('Space is drawn in the board/dom with the expected id attribute', () => {
 		space.drawSVGSpace();
+		
+		const spaceInDom = document.getElementById(id);
+
+		expect(spaceInDom).toBeDefined();
     });
 })
