@@ -1,12 +1,12 @@
 import Space from '../game/Space';
 import Token from '../game/Token';
 import Player from '../game/Player';
-import body from '../test/bodyTest.html';
+import body from './bodyTest.html';
 
 describe('Space', () => {
 	document.body.innerHTML = body;
-	let x,y,owner,space,token,id;
-  
+	let x, y, owner, space, token, id;
+
 	beforeAll(() => {
 		x = 0;
 		y = 0;
@@ -16,25 +16,25 @@ describe('Space', () => {
 		id = space.id;
 	});
 
-	test('Space is created with expected id', () => {
-        expect(id).toEqual(`space-0-0`);
-    });
+	describe('mark', () => {
+		test('Space is marked when token drops and with the correct token', () => {
+			space.mark(token);
 
-	test('Space is marked when token drops and with the correct token', () => {
-		space.mark(token);
+			expect(space.token).toEqual(token);
+		});
 
-		expect(space.token).toEqual(token);
-    });
+		test('Space is also marked with the correct owner', () => {
+			expect(space.owner).toEqual(owner);
+		});
+	});
 
-	test('Space is also marked with the correct owner', () => {
-		expect(space.owner).toEqual(owner);
-    });
+	describe('drawSVGSpace', () => {
+		test('Space is drawn in the board/dom with the expected id attribute', () => {
+			space.drawSVGSpace();
 
-	test('Space is drawn in the board/dom with the expected id attribute', () => {
-		space.drawSVGSpace();
-		
-		const spaceInDom = document.getElementById(id);
+			const spaceInDom = document.getElementById(id);
 
-		expect(spaceInDom).toBeDefined();
-    });
-})
+			expect(spaceInDom).toBeDefined();
+		});
+	});
+});
