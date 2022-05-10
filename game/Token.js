@@ -30,7 +30,7 @@ class Token {
 	 */
 	moveLeft() {
 		if (this.columnLocation > 0) {
-			this.htmlToken.style.left = this.htmlToken.offsetLeft - 76;
+			this.htmlToken.style.left = `${this.htmlToken.offsetLeft - 76}px`;
 			this.columnLocation -= 1;
 		}
 	}

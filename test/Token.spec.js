@@ -6,18 +6,24 @@ import body from './bodyTest.html';
 describe('Token', () => {
 	document.body.innerHTML = body;
 
-	let player, token, intialColumnLocation;
+	const changeOffsetLeft = (value) =>
+		Object.defineProperty(HTMLElement.prototype, 'offsetLeft', {
+			configurable: true,
+			value: value + 16,
+		});
+
+	let player, token, intialColumnLocation, htmlToken;
 
 	beforeEach(() => {
 		player = new Player('Jizanthapus', 1, '#e15258', true);
 		token = new Token(1, player);
 		token.columnLocation = 0;
-		intialColumnLocation = token.columnLocation;
 
 		const existingToken = document.getElementById(token.id);
 		if (existingToken) existingToken.remove();
 
 		token.drawHTMLToken();
+		htmlToken = token.htmlToken;
 	});
 
 	describe('drawHTMLToken', () => {
@@ -28,36 +34,71 @@ describe('Token', () => {
 		});
 	});
 
-	describe('moveLeft', () => {
-		test('columnLocation number not reducing since initially 0', () => {
-			token.moveLeft();
+	describe('moveRight', () => {
+		test('Token not moving on the right if set on 7th column', () => {
+			token.moveRight(7);
+			changeOffsetLeft(76);
+
+			token.moveRight(7);
+			changeOffsetLeft(76 * 2);
+
+			token.moveRight(7);
+			changeOffsetLeft(76 * 3);
+
+			token.moveRight(7);
+			changeOffsetLeft(76 * 4);
+
+			token.moveRight(7);
+			changeOffsetLeft(76 * 5);
+
+			token.moveRight(7);
+			changeOffsetLeft(76 * 6);
+
+			intialColumnLocation = token.columnLocation;
+			const expecteOffsetStyle = `${htmlToken.offsetLeft}px`;
+			token.moveRight(7);
 
 			expect(token.columnLocation).toEqual(intialColumnLocation);
+			expect(htmlToken.style.left).toEqual(expecteOffsetStyle);
 		});
 
-		test('columnLocation number reduces when greater than 0', () => {
-			token.columnLocation = 3;
+		test('Token moves on the right if set on 6th column or less', () => {
+			intialColumnLocation = token.columnLocation;
+			const expecteOffsetStyle = `${token.htmlToken.offsetLeft + 76}px`;
+			token.moveRight(7);
+
+			expect(token.columnLocation).toEqual(intialColumnLocation + 1);
+			expect(htmlToken.style.left).toEqual(expecteOffsetStyle);
+		});
+	});
+
+	describe('moveLeft', () => {
+		test('columnLocation number not reducing if 0 column', () => {
 			intialColumnLocation = token.columnLocation;
 
 			token.moveLeft();
 
+			if (token.columnLocation > 0) changeOffsetLeft(-76);
+			const expecteOffsetStyle = '';
+
+			expect(token.columnLocation).toEqual(intialColumnLocation);
+			expect(htmlToken.style.left).toEqual(expecteOffsetStyle);
+		});
+
+		test('columnLocation number reduces when greater than 0', () => {
+			changeOffsetLeft(0);
+
+			token.moveRight(7);
+			changeOffsetLeft(76);
+
+			intialColumnLocation = token.columnLocation;
+			const expecteOffsetStyle = '16px';
+
+			token.moveLeft();
+			changeOffsetLeft(-76);
+
 			expect(token.columnLocation).toEqual(intialColumnLocation - 1);
-		});
-	});
-
-	describe('moveRight', () => {
-		test('columnLocation number increases by 1, when with default 0 value', () => {
-			token.moveRight(7);
-
-			expect(token.columnLocation).toEqual(intialColumnLocation + 1);
-		});
-
-		test('left style is increasing by 76px', () => {
-			const expecteOffsetStyle = `${token.htmlToken.offsetLeft + 76}px`;
-
-			token.moveRight(7);
-
-			expect(token.htmlToken.style.left).toEqual(expecteOffsetStyle);
+			expect(htmlToken.style.left).toEqual(expecteOffsetStyle);
 		});
 	});
 
