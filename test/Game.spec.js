@@ -38,10 +38,6 @@ describe('Game', () => {
 
 	describe('handleKeydown', () => {
 		test('Active player token moves on the right on ArrowRight', () => {
-			console.log(
-				'token.htmlToken.style.left',
-				token.htmlToken.style.left,
-			);
 			const expectLeftStyle = '76px';
 			const eventFaked = {key: 'ArrowRight'};
 
