@@ -15,14 +15,6 @@ class Token {
 	}
 
 	/**
-	 * Gets left offset of html element.
-	 * @return {number} Left offset of token object's htmlToken.
-	 */
-	get offsetLeft() {
-		return this.htmlToken.offsetLeft;
-	}
-
-	/**
 	 * Draws new HTML token.
 	 */
 	drawHTMLToken() {
@@ -38,7 +30,7 @@ class Token {
 	 */
 	moveLeft() {
 		if (this.columnLocation > 0) {
-			this.htmlToken.style.left = this.offsetLeft - 76;
+			this.htmlToken.style.left = this.htmlToken.offsetLeft - 76;
 			this.columnLocation -= 1;
 		}
 	}
@@ -49,15 +41,15 @@ class Token {
 	 */
 	moveRight(columns) {
 		if (this.columnLocation < columns - 1) {
-			this.htmlToken.style.left = this.offsetLeft + 76;
+			this.htmlToken.style.left = `${this.htmlToken.offsetLeft + 76}px`;
 			this.columnLocation += 1;
 		}
 	}
 
 	/**
 	 * Drops html token into targeted board space.
-	 * @param {Object} Targeted space for dropped token.
-	 * @param {function} The reset function to call after the drop animation has completed.
+	 * @param {Object} target space for dropped token.
+	 * @param {function} reset function to call after the drop animation has completed.
 	 */
 	drop(target, reset) {
 		this.dropped = true;

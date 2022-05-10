@@ -1,28 +1,31 @@
 import Token from '../game/Token';
 import Player from '../game/Player';
-import body from './bodyTest.html';
 import Space from '../game/Space';
+import body from './bodyTest.html';
 
 describe('Token', () => {
 	document.body.innerHTML = body;
-	const player = new Player('Jizanthapus', 1, '#e15258', true);
-	const token = new Token(1, player);
+
+	let player, token, intialColumnLocation;
+
+	beforeEach(() => {
+		player = new Player('Jizanthapus', 1, '#e15258', true);
+		token = new Token(1, player);
+		token.columnLocation = 0;
+		intialColumnLocation = token.columnLocation;
+
+		const existingToken = document.getElementById(token.id);
+		if (existingToken) existingToken.remove();
+
+		token.drawHTMLToken();
+	});
 
 	describe('drawHTMLToken', () => {
 		test('Token is drawn in the boards underlay with defined id', () => {
-			token.drawHTMLToken();
-
 			const drawnToken = document.getElementById(token.id);
 
 			expect(drawnToken).toBeDefined();
 		});
-	});
-
-	let intialColumnLocation;
-
-	beforeEach(() => {
-		token.columnLocation = 0;
-		intialColumnLocation = token.columnLocation;
 	});
 
 	describe('moveLeft', () => {
@@ -50,8 +53,8 @@ describe('Token', () => {
 		});
 
 		test('left style is increasing by 76px', () => {
-			token.drawHTMLToken();
-			const expecteOffsetStyle = `${token.offsetLeft + 76}px`;
+			const expecteOffsetStyle = `${token.htmlToken.offsetLeft + 76}px`;
+
 			token.moveRight(7);
 
 			expect(token.htmlToken.style.left).toEqual(expecteOffsetStyle);
