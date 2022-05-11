@@ -1,3 +1,3 @@
 Connect 4 board game with webpack and jest.
 
-![alt text](connect4.png)
+![alt text](connect4.png =650x589)
