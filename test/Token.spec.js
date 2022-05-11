@@ -12,7 +12,7 @@ describe('Token', () => {
 			value: value + 16,
 		});
 
-	let player, token, intialColumnLocation, htmlToken;
+	let player, token, htmlToken;
 
 	beforeEach(() => {
 		player = new Player('Jizanthapus', 1, '#e15258', true);
@@ -54,7 +54,7 @@ describe('Token', () => {
 			token.moveRight(7);
 			changeOffsetLeft(76 * 6);
 
-			intialColumnLocation = token.columnLocation;
+			const intialColumnLocation = token.columnLocation;
 			const expecteOffsetStyle = `${htmlToken.offsetLeft}px`;
 			token.moveRight(7);
 
@@ -63,7 +63,7 @@ describe('Token', () => {
 		});
 
 		test('Token moves on the right if set on 6th column or less', () => {
-			intialColumnLocation = token.columnLocation;
+			const intialColumnLocation = token.columnLocation;
 			const expecteOffsetStyle = `${token.htmlToken.offsetLeft + 76}px`;
 			token.moveRight(7);
 
@@ -74,7 +74,7 @@ describe('Token', () => {
 
 	describe('moveLeft', () => {
 		test('columnLocation number not reducing if 0 column', () => {
-			intialColumnLocation = token.columnLocation;
+			const intialColumnLocation = token.columnLocation;
 
 			token.moveLeft();
 
@@ -91,7 +91,7 @@ describe('Token', () => {
 			token.moveRight(7);
 			changeOffsetLeft(76);
 
-			intialColumnLocation = token.columnLocation;
+			const intialColumnLocation = token.columnLocation;
 			const expecteOffsetStyle = '16px';
 
 			token.moveLeft();
