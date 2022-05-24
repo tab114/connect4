@@ -73,7 +73,7 @@ describe('Token', () => {
 	});
 
 	describe('moveLeft', () => {
-		test('columnLocation number not reducing if 0 column', () => {
+		test('Token not moving on the left if set on 1th column', () => {
 			const intialColumnLocation = token.columnLocation;
 
 			token.moveLeft();
@@ -85,7 +85,7 @@ describe('Token', () => {
 			expect(htmlToken.style.left).toEqual(expecteOffsetStyle);
 		});
 
-		test('columnLocation number reduces when greater than 0', () => {
+		test('Token moves on the left if set on 2th column or greater', () => {
 			changeOffsetLeft(0);
 
 			token.moveRight(7);
